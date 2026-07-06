@@ -3,7 +3,7 @@
   "Name": "TickTick Focus",
   "Description": "Control and mirror your TickTick focus/pomodoro from a single smart button. Start a 25-minute focus, pause/resume with the same click, and start the 5-minute break when focus ends. Detects focus started or paused on another device and shows the live remaining time (MM:SS) on your Ulanzi Deck.",
   "Author": "Narlei Moreira",
-  "Version": "1.0.0",
+  "Version": "1.0.1",
   "Icon": "resources/icon.png",
   "Category": "TickTick",
   "CategoryIcon": "resources/icon.png",
