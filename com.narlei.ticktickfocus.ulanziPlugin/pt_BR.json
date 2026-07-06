@@ -1,6 +1,6 @@
 {
   "Name": "Foco do TickTick",
-  "Description": "Controle e reflita o foco/pomodoro do TickTick a partir de um único botão inteligente. Inicie um foco de 25 minutos, pause/continue com o mesmo clique e inicie o relax de 5 minutos ao terminar. Detecta foco iniciado ou pausado em outro aparelho e mostra o tempo restante ao vivo (MM:SS) no seu Ulanzi Deck.",
+  "Description": "Plugin não oficial e independente — sem afiliação ou endosso do TickTick. Controle e reflita o foco/pomodoro do TickTick a partir de um único botão inteligente. Inicie um foco de 25 minutos, pause/continue com o mesmo clique e inicie o relax de 5 minutos ao terminar. Detecta foco iniciado ou pausado em outro aparelho e mostra o tempo restante ao vivo (MM:SS) no seu Ulanzi Deck. Seus dados ficam privados: só o token de sessão é guardado localmente, e o plugin fala direto com o TickTick — nunca com um servidor de terceiros.",
   "Actions": [
     {
       "Name": "Foco",
@@ -8,6 +8,7 @@
     }
   ],
   "Localization": {
+    "disclaimer": "🔒 Plugin não oficial, sem afiliação com o TickTick. Seus dados ficam privados — nunca saem do seu Mac, exceto para falar direto com o TickTick.",
     "statusUnknown": "Não conectado",
     "statusConnected": "Conectado ✓",
     "statusDisconnected": "Não conectado",

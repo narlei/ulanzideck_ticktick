@@ -1,0 +1,27 @@
+{
+  "Name": "TickTick 專注",
+  "Description": "非官方獨立外掛程式——與 TickTick 沒有任何關聯或認可關係。透過一個智慧按鈕控制並反映你的 TickTick 專注/番茄鐘。開始 25 分鐘的專注，同一次點擊即可暫停/繼續，專注結束時開始 5 分鐘休息。可偵測到在其他裝置上開始或暫停的專注，並在 Ulanzi Deck 上即時顯示剩餘時間（MM:SS）。你的資料始終保密：本機只會儲存工作階段權杖，外掛程式直接與 TickTick 通訊——絕不經過第三方伺服器。",
+  "Actions": [
+    {
+      "Name": "專注",
+      "Tooltip": "開始、暫停、繼續並反映你的 TickTick 專注計時器。"
+    }
+  ],
+  "Localization": {
+    "disclaimer": "🔒 非官方外掛程式，與 TickTick 沒有關聯。你的資料始終保密——除了直接與 TickTick 通訊外，絕不會離開你的 Mac。",
+    "statusUnknown": "未連線",
+    "statusConnected": "已連線 ✓",
+    "statusDisconnected": "未連線",
+    "loginBtn": "登入 TickTick",
+    "loggingIn": "等待登入…",
+    "logoutBtn": "登出",
+    "loginHelp": "開啟一個小型 TickTick 視窗。正常登入即可——工作階段會自動擷取。除工作階段權杖外不會儲存任何內容。",
+    "advancedLabel": "進階——手動貼上權杖",
+    "tokenLabel": "工作階段權杖（cookie t）",
+    "saveTokenBtn": "儲存權杖",
+    "tokenHelp": "於 ticktick.com → 開發人員工具 → Application/Storage → Cookies → 複製 t 的值。",
+    "focusLabel": "專注（分鐘）",
+    "breakLabel": "休息（分鐘）",
+    "durationHint": "保持為 0 以使用你的 TickTick 番茄鐘偏好設定。"
+  }
+}

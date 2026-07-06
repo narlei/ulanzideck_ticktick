@@ -1,0 +1,27 @@
+{
+  "Name": "TickTick 专注",
+  "Description": "非官方独立插件——与 TickTick 无任何关联或认可关系。通过一个智能按钮控制并映射你的 TickTick 专注/番茄钟。开始 25 分钟的专注，同一次点击即可暂停/继续，专注结束时开始 5 分钟休息。可检测到在其他设备上开始或暂停的专注，并在 Ulanzi Deck 上实时显示剩余时间（MM:SS）。你的数据始终保密：本地仅保存会话令牌，插件直接与 TickTick 通信——绝不经过第三方服务器。",
+  "Actions": [
+    {
+      "Name": "专注",
+      "Tooltip": "开始、暂停、继续并映射你的 TickTick 专注计时器。"
+    }
+  ],
+  "Localization": {
+    "disclaimer": "🔒 非官方插件，与 TickTick 无关联。你的数据始终保密——除了直接与 TickTick 通信外，绝不会离开你的 Mac。",
+    "statusUnknown": "未连接",
+    "statusConnected": "已连接 ✓",
+    "statusDisconnected": "未连接",
+    "loginBtn": "登录 TickTick",
+    "loggingIn": "等待登录…",
+    "logoutBtn": "退出登录",
+    "loginHelp": "打开一个小的 TickTick 窗口。正常登录即可——会话会自动捕获。除会话令牌外不会保存任何内容。",
+    "advancedLabel": "高级——手动粘贴令牌",
+    "tokenLabel": "会话令牌（cookie t）",
+    "saveTokenBtn": "保存令牌",
+    "tokenHelp": "在 ticktick.com → 开发者工具 → Application/Storage → Cookies → 复制 t 的值。",
+    "focusLabel": "专注（分钟）",
+    "breakLabel": "休息（分钟）",
+    "durationHint": "保持为 0 以使用你的 TickTick 番茄钟偏好设置。"
+  }
+}

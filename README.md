@@ -10,6 +10,9 @@ Start, pause, and break your pomodoro from one smart key. No app switching, no d
 [![Platform](https://img.shields.io/badge/platform-macOS-lightgrey.svg)]()
 [![UlanziDeck](https://img.shields.io/badge/UlanziDeck-plugin-orange.svg)]()
 [![Native login](https://img.shields.io/badge/login-one--click-4772FA.svg)]()
+[![Unofficial](https://img.shields.io/badge/unofficial-not%20affiliated%20with%20TickTick-lightgrey.svg)]()
+
+> **Disclaimer:** this is an independent, open-source project built by a fan. It is **not affiliated with, endorsed by, or supported by TickTick**. "TickTick" is a trademark of its respective owner.
 
 ---
 
@@ -65,6 +68,18 @@ As soon as the session is captured, the window closes and the token is saved. **
 ### Why a login window instead of email/password fields?
 
 TickTick's web login requires a browser-generated `X-Csrftoken` that a headless request can't forge — a raw email/password POST gets rejected even with the correct password. Driving the real WebKit engine sidesteps that entirely: the page generates its own CSRF token and handles captcha/2FA, and the plugin just reads the resulting `t` cookie (WKWebView can read HttpOnly cookies, which page JavaScript can't).
+
+---
+
+## Privacy & security
+
+Your data stays private, by design:
+
+- **No third-party server.** The plugin talks directly to `ticktick.com` / `ms.ticktick.com` — never to any server run by this project or anyone else.
+- **No analytics, no telemetry.** Nothing about your tasks, focus sessions, or usage is collected or transmitted anywhere.
+- **Your password is never seen or stored.** Login happens in a real WebKit window owned by TickTick; the plugin only ever reads the resulting session cookie.
+- **Only a session token is stored, and only locally**, in `~/Library/Application Support/TickTickFocus/` on your own Mac.
+- **Open source.** Every line is in this repo — audit it yourself.
 
 ---
 

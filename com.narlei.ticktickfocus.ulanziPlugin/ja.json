@@ -1,0 +1,27 @@
+{
+  "Name": "TickTick フォーカス",
+  "Description": "非公式の独立したプラグインです — TickTick とは提携・承認関係にありません。単一のスマートボタンから TickTick のフォーカス/ポモドーロを操作・反映します。25 分のフォーカスを開始し、同じクリックで一時停止/再開でき、フォーカス終了時には 5 分の休憩を開始します。他のデバイスでフォーカスが開始または一時停止されたことを検出し、残り時間（MM:SS）を Ulanzi Deck にリアルタイムで表示します。データはプライベートに保たれます。ローカルに保存されるのはセッショントークンのみで、プラグインは TickTick と直接通信します — サードパーティのサーバーとは通信しません。",
+  "Actions": [
+    {
+      "Name": "フォーカス",
+      "Tooltip": "TickTick のフォーカスタイマーを開始・一時停止・再開・反映します。"
+    }
+  ],
+  "Localization": {
+    "disclaimer": "🔒 非公式プラグインです。TickTick とは提携していません。データはプライベートに保たれます — TickTick と直接通信する場合を除き、Mac の外に出ることはありません。",
+    "statusUnknown": "未接続",
+    "statusConnected": "接続済み ✓",
+    "statusDisconnected": "未接続",
+    "loginBtn": "TickTick にサインイン",
+    "loggingIn": "ログインを待っています…",
+    "logoutBtn": "サインアウト",
+    "loginHelp": "小さな TickTick ウィンドウが開きます。普段どおりログインしてください — セッションは自動的に取得されます。セッショントークン以外は何も保存されません。",
+    "advancedLabel": "詳細設定 — トークンを手動で貼り付け",
+    "tokenLabel": "セッショントークン（cookie t）",
+    "saveTokenBtn": "トークンを保存",
+    "tokenHelp": "ticktick.com → 開発者ツール → Application/Storage → Cookies → t の値をコピーしてください。",
+    "focusLabel": "フォーカス（分）",
+    "breakLabel": "休憩（分）",
+    "durationHint": "0 のままにすると TickTick のポモドーロ設定を使用します。"
+  }
+}

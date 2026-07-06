@@ -1,0 +1,27 @@
+{
+  "Name": "TickTick Fokus",
+  "Description": "Inoffizielles, unabhängiges Plugin — keine Zugehörigkeit zu oder Unterstützung durch TickTick. Steuere und spiegle deinen TickTick-Fokus/Pomodoro über eine einzige intelligente Taste. Starte einen 25-minütigen Fokus, pausiere/setze mit demselben Klick fort und starte die 5-minütige Pause, wenn der Fokus endet. Erkennt einen auf einem anderen Gerät gestarteten oder pausierten Fokus und zeigt die verbleibende Zeit live (MM:SS) auf deinem Ulanzi Deck an. Deine Daten bleiben privat: Es wird nur ein Sitzungstoken lokal gespeichert, und das Plugin kommuniziert direkt mit TickTick — niemals mit einem Server Dritter.",
+  "Actions": [
+    {
+      "Name": "Fokus",
+      "Tooltip": "Starte, pausiere, setze fort und spiegle deinen TickTick-Fokus-Timer."
+    }
+  ],
+  "Localization": {
+    "disclaimer": "🔒 Inoffizielles Plugin, keine Zugehörigkeit zu TickTick. Deine Daten bleiben privat — sie verlassen deinen Mac nie, außer um direkt mit TickTick zu kommunizieren.",
+    "statusUnknown": "Nicht verbunden",
+    "statusConnected": "Verbunden ✓",
+    "statusDisconnected": "Nicht verbunden",
+    "loginBtn": "Bei TickTick anmelden",
+    "loggingIn": "Warte auf Anmeldung…",
+    "logoutBtn": "Abmelden",
+    "loginHelp": "Öffnet ein kleines TickTick-Fenster. Melde dich wie gewohnt an — die Sitzung wird automatisch erfasst. Es wird nichts außer dem Sitzungstoken gespeichert.",
+    "advancedLabel": "Erweitert — Token manuell einfügen",
+    "tokenLabel": "Sitzungstoken (Cookie t)",
+    "saveTokenBtn": "Token speichern",
+    "tokenHelp": "Von ticktick.com → Entwicklertools → Application/Storage → Cookies → Wert von t kopieren.",
+    "focusLabel": "Fokus (Min.)",
+    "breakLabel": "Pause (Min.)",
+    "durationHint": "Bei 0 belassen, um deine TickTick-Pomodoro-Einstellungen zu verwenden."
+  }
+}
