@@ -1,0 +1,27 @@
+{
+  "Name": "Foco de TickTick",
+  "Description": "Plugin no oficial e independiente — sin afiliación ni respaldo de TickTick. Controla y refleja tu foco/pomodoro de TickTick desde un único botón inteligente. Inicia un foco de 25 minutos, pausa/reanuda con el mismo clic e inicia el descanso de 5 minutos cuando el foco termina. Detecta si el foco se inició o pausó en otro dispositivo y muestra el tiempo restante en vivo (MM:SS) en tu Ulanzi Deck. Tus datos permanecen privados: solo se guarda un token de sesión de forma local, y el plugin habla directamente con TickTick, nunca con un servidor de terceros.",
+  "Actions": [
+    {
+      "Name": "Foco",
+      "Tooltip": "Inicia, pausa, reanuda y refleja tu temporizador de foco de TickTick."
+    }
+  ],
+  "Localization": {
+    "disclaimer": "🔒 Plugin no oficial, sin afiliación con TickTick. Tus datos permanecen privados — nunca salen de tu Mac, salvo para hablar directamente con TickTick.",
+    "statusUnknown": "No conectado",
+    "statusConnected": "Conectado ✓",
+    "statusDisconnected": "No conectado",
+    "loginBtn": "Iniciar sesión en TickTick",
+    "loggingIn": "Esperando el inicio de sesión…",
+    "logoutBtn": "Cerrar sesión",
+    "loginHelp": "Abre una pequeña ventana de TickTick. Inicia sesión normalmente — la sesión se captura automáticamente. No se guarda nada salvo el token de sesión.",
+    "advancedLabel": "Avanzado — pegar token manualmente",
+    "tokenLabel": "Token de sesión (cookie t)",
+    "saveTokenBtn": "Guardar token",
+    "tokenHelp": "Desde ticktick.com → herramientas de desarrollo → Application/Storage → Cookies → copia el valor de t.",
+    "focusLabel": "Foco (min)",
+    "breakLabel": "Descanso (min)",
+    "durationHint": "Deja en 0 para usar tus preferencias de pomodoro de TickTick."
+  }
+}

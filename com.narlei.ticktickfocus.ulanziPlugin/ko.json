@@ -1,0 +1,27 @@
+{
+  "Name": "TickTick 포커스",
+  "Description": "비공식 독립 플러그인입니다 — TickTick과 제휴하거나 승인받지 않았습니다. 하나의 스마트 버튼으로 TickTick의 포커스/뽀모도로를 제어하고 반영합니다. 25분 포커스를 시작하고, 같은 클릭으로 일시정지/재개하며, 포커스가 끝나면 5분 휴식을 시작합니다. 다른 기기에서 포커스가 시작되거나 일시정지된 것을 감지하여 남은 시간(MM:SS)을 Ulanzi Deck에 실시간으로 표시합니다. 데이터는 비공개로 유지됩니다: 세션 토큰만 로컬에 저장되며, 플러그인은 TickTick과 직접 통신합니다 — 제3자 서버와는 절대 통신하지 않습니다.",
+  "Actions": [
+    {
+      "Name": "포커스",
+      "Tooltip": "TickTick 포커스 타이머를 시작, 일시정지, 재개 및 반영합니다."
+    }
+  ],
+  "Localization": {
+    "disclaimer": "🔒 비공식 플러그인이며 TickTick과 제휴 관계가 없습니다. 데이터는 비공개로 유지됩니다 — TickTick과 직접 통신하는 경우를 제외하고 Mac을 벗어나지 않습니다.",
+    "statusUnknown": "연결되지 않음",
+    "statusConnected": "연결됨 ✓",
+    "statusDisconnected": "연결되지 않음",
+    "loginBtn": "TickTick에 로그인",
+    "loggingIn": "로그인 대기 중…",
+    "logoutBtn": "로그아웃",
+    "loginHelp": "작은 TickTick 창이 열립니다. 평소처럼 로그인하세요 — 세션이 자동으로 캡처됩니다. 세션 토큰 외에는 아무것도 저장되지 않습니다.",
+    "advancedLabel": "고급 — 토큰 수동 붙여넣기",
+    "tokenLabel": "세션 토큰(쿠키 t)",
+    "saveTokenBtn": "토큰 저장",
+    "tokenHelp": "ticktick.com → 개발자 도구 → Application/Storage → Cookies → t 값을 복사하세요.",
+    "focusLabel": "포커스(분)",
+    "breakLabel": "휴식(분)",
+    "durationHint": "TickTick 뽀모도로 설정을 사용하려면 0으로 두세요."
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "Name": "Focus TickTick",
+  "Description": "Plugin non officiel et indépendant — sans affiliation ni approbation de TickTick. Contrôlez et reflétez votre focus/pomodoro TickTick depuis un seul bouton intelligent. Démarrez un focus de 25 minutes, mettez en pause/reprenez avec le même clic, et démarrez la pause de 5 minutes à la fin du focus. Détecte un focus démarré ou mis en pause sur un autre appareil et affiche le temps restant en direct (MM:SS) sur votre Ulanzi Deck. Vos données restent privées : seul un jeton de session est stocké localement, et le plugin communique directement avec TickTick — jamais avec un serveur tiers.",
+  "Actions": [
+    {
+      "Name": "Focus",
+      "Tooltip": "Démarrez, mettez en pause, reprenez et reflétez votre minuteur de focus TickTick."
+    }
+  ],
+  "Localization": {
+    "disclaimer": "🔒 Plugin non officiel, sans affiliation avec TickTick. Vos données restent privées — elles ne quittent jamais votre Mac, sauf pour communiquer directement avec TickTick.",
+    "statusUnknown": "Non connecté",
+    "statusConnected": "Connecté ✓",
+    "statusDisconnected": "Non connecté",
+    "loginBtn": "Se connecter à TickTick",
+    "loggingIn": "En attente de connexion…",
+    "logoutBtn": "Se déconnecter",
+    "loginHelp": "Ouvre une petite fenêtre TickTick. Connectez-vous normalement — la session est capturée automatiquement. Rien n'est stocké à part le jeton de session.",
+    "advancedLabel": "Avancé — coller le jeton manuellement",
+    "tokenLabel": "Jeton de session (cookie t)",
+    "saveTokenBtn": "Enregistrer le jeton",
+    "tokenHelp": "Depuis ticktick.com → outils de développement → Application/Storage → Cookies → copiez la valeur de t.",
+    "focusLabel": "Focus (min)",
+    "breakLabel": "Pause (min)",
+    "durationHint": "Laissez à 0 pour utiliser vos préférences de pomodoro TickTick."
+  }
+}

@@ -1,17 +1,23 @@
 // SVG → dataURL renderer for the Focus button (PLAN §9).
 // Helpers (svgDoc/toDataUrl/textWithShadow) mirror the Claude Usage plugin.
 
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
 const SIZE = 200;
 const BG = '#1f1f23';
 const TEXT = '#ffffff';
 const SHADOW = 'rgba(0,0,0,0.85)';
 const TRACK = '#33333b';
 
-const TICKTICK_BLUE = '#4772FA';
 const FOCUS_GREEN = '#3ecf6b';
 const BREAK_CYAN = '#22b8cf';
 const PAUSE_AMBER = '#e3b341';
 const MUTED = '#6a6a73';
+
+const APP_ICON_PATH = join(dirname(fileURLToPath(import.meta.url)), '..', 'resources', 'action.png');
+const APP_ICON_BASE64 = readFileSync(APP_ICON_PATH).toString('base64');
 
 const RING_CX = SIZE / 2;
 const RING_CY = 100;
@@ -40,19 +46,10 @@ function textWithShadow(text, x, y, fontSize, weight = '700', anchor = 'middle',
   );
 }
 
-// A simple TickTick-style check mark inside a rounded square.
-function tickIcon(cx, cy, size, color = TICKTICK_BLUE) {
+// The real TickTick app icon, embedded as a base64 PNG.
+function tickIcon(cx, cy, size) {
   const half = size / 2;
-  const x = cx - half;
-  const y = cy - half;
-  const r = size * 0.22;
-  const p1x = x + size * 0.24, p1y = y + size * 0.52;
-  const p2x = x + size * 0.42, p2y = y + size * 0.70;
-  const p3x = x + size * 0.76, p3y = y + size * 0.30;
-  return (
-    `<rect x="${x}" y="${y}" width="${size}" height="${size}" rx="${r}" ry="${r}" fill="${color}"/>` +
-    `<path d="M${p1x} ${p1y} L${p2x} ${p2y} L${p3x} ${p3y}" fill="none" stroke="#ffffff" stroke-width="${size * 0.11}" stroke-linecap="round" stroke-linejoin="round"/>`
-  );
+  return `<image x="${cx - half}" y="${cy - half}" width="${size}" height="${size}" href="data:image/png;base64,${APP_ICON_BASE64}"/>`;
 }
 
 // Progress ring. `ratio` is the remaining fraction (1 = full, 0 = empty).
