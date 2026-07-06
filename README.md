@@ -1,103 +1,111 @@
-# TickTick Focus — Ulanzi Deck plugin
+# TickTick Focus
 
-A single **smart Focus button** for your Ulanzi Deck that controls and mirrors your
-TickTick focus/pomodoro timer.
+**Your TickTick focus timer — live on a physical button.**
 
-- **Start** a focus session (default 25 min) with one click.
-- **Pause / resume** an in-progress focus with the same click.
-- When focus ends, the button shows **Relax 5'?** — click to start the break.
-- **Mirrors** focus started or paused on another device (Mac, phone) within ~30 s.
-- Shows the **live remaining time (MM:SS)** with a progress ring.
+Start, pause, and break your pomodoro from one smart key. No app switching, no dashboards.
 
-The button never ends/abandons a session — that stays a deliberate action in TickTick.
+![TickTick Focus on an Ulanzi Deck](resources/cover.png)
+
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-macOS-lightgrey.svg)]()
+[![UlanziDeck](https://img.shields.io/badge/UlanziDeck-plugin-orange.svg)]()
+[![Native login](https://img.shields.io/badge/login-one--click-4772FA.svg)]()
+
+---
+
+## Why this exists
+
+You start a focus session on your phone, switch to your Mac, and lose track of how much time is left. Or you want to start a pomodoro without breaking flow to find the app.
+
+TickTick Focus puts your live focus timer on a physical button in front of you — one tap to start, pause, or take the break, always in sync with every device.
+
+---
 
 ## Install
-
-**One-liner (recommended):**
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/narlei/ulanzideck-ticktick/main/install.sh)"
 ```
 
-It downloads the latest release, installs it into the UlanziDeck plugins folder,
-strips the download quarantine from the native login helper (so Gatekeeper allows
-the unsigned binary), and restarts Ulanzi Studio.
+> **Requirements:** macOS · [Ulanzi Studio](https://www.ulanzi.com/pages/download)
 
-**From source:** `make install` compiles the native helper, syncs into
-`~/Library/Application Support/Ulanzi/UlanziDeck/Plugins`, and restarts the app.
-`make package` produces `dist/com.narlei.ticktickfocus.ulanziPlugin.zip`.
+One command. It downloads the latest release, installs it, unblocks the native login helper, and restarts Ulanzi Studio. UlanziDeck ships its own Node, so there's nothing else to install.
 
-## Setup
+---
 
-Open the button's settings (property inspector) and click **Sign in to TickTick**.
-A small native window (macOS WebKit — no Chromium, no download) opens the TickTick
-login page. Log in however you normally do — password, Google/Apple, captcha, 2FA;
-it's a real browser engine. As soon as the session cookie appears, the window closes
-and the token is saved. **Nothing is stored except the session token** — no password.
+## One button, every state
 
-- **Token expiry:** the session token lasts weeks/months but can eventually expire.
-  When it does, the button shows **↻** — just click **Sign in** again.
-- **Manual fallback:** under *Advanced*, you can paste the `t` cookie value yourself
-  (ticktick.com → dev tools → Application/Storage → Cookies → `t`).
-- **Durations:** override focus/break minutes, or leave at `0` to follow your TickTick
-  pomodoro preferences.
+Drag the **Focus** button to your deck. A single click cycles focus ↔ pause; when a session ends it offers the break. The key mirrors your live session even when you started it on another device.
 
-### Why a native login window instead of email/password fields?
+![Every state, one glance](resources/banner1.png)
 
-TickTick's web login requires a browser-generated `X-Csrftoken` (plus session
-cookies) that a headless request can't reliably forge — a raw email/password POST
-gets rejected even with the correct password. Driving the real WebKit engine sidesteps
-that entirely: the page generates its own CSRF token and handles captcha/2FA, and we
-just read the resulting `t` cookie (WKWebView can read HttpOnly cookies, which page
-JavaScript cannot). The token is persisted to
-`~/Library/Application Support/TickTickFocus/auth.json`, outside the plugin folder, so
-it survives restarts and reinstalls.
+| State | The button shows | A click does |
+|---|---|---|
+| **Idle** | TickTick check + "Focus" | start a 25-min focus |
+| **Focusing** | green ring + live `MM:SS` | pause |
+| **Paused** | amber `MM:SS` + ⏸ | resume |
+| **Relax?** | "Relax 5'?" (cyan) | start the 5-min break |
+| **Break** | cyan ring + live `MM:SS` | pause / resume |
+| **↻ Re-sign in** | amber ↻ | reopen the login window |
 
-## How it works
+The button **never ends or abandons** a session — that stays a deliberate action in TickTick. Durations follow your TickTick pomodoro preferences, or you can override them per button.
 
-| Button state | Detected from | Click does | Shows |
-|---|---|---|---|
-| **Idle** | no active session | start focus (25') | TickTick logo + "Focus" |
-| **Focusing** | active, time left | pause | ring + MM:SS (green) |
-| **Paused** | session paused | resume | MM:SS + "⏸ Paused" (amber) |
-| **Relax?** | focus completed | start break (5') | "Relax 5'?" (cyan) |
-| **Break** | break running | pause/resume | MM:SS (cyan) |
-| **Login / Reauth / Error** | no/invalid token, network | opens settings / retries | neutral screens |
+---
 
-State is server-authoritative: the plugin polls `ms.ticktick.com/focus/batch/focusOp`
-every ~30 s (paused when the key isn't visible) and ticks the countdown locally each
-second in between. A click sends the operation, updates the UI optimistically, and
-reconciles with the server's returned state.
+## Sign in once, stay in flow
 
-## Architecture
+Click **Sign in to TickTick** in the button settings. A small native window — built on the macOS WebKit engine already on your Mac, no Chromium, no download — opens the real TickTick login. Log in however you normally do (password, Google, Apple, captcha, 2FA); it's a real browser engine.
 
-```
-com.narlei.ticktickfocus.ulanziPlugin/
-├── manifest.json                 # 1 action "Focus", Type JavaScript, PrivateAPI
-├── plugin/
-│   ├── app.js                    # lifecycle + state machine + poll (30s) + tick (1s)
-│   ├── ticktick-client.js        # signin / getState / sendOp / prefs (all API isolated here)
-│   ├── focus-state.js            # derives the logical state from `current` + countdown
-│   ├── renderer.js               # SVG → dataURL per state
-│   └── plugin-common-node/       # UlanziDeck node SDK
-├── property-inspector/           # Sign-in button, status, token fallback, overrides
-├── libs/                         # browser-side SDK for the property inspector
-├── resources/                    # icon.png, action.png, ticktick-login (native helper)
-└── en.json / pt_BR.json          # localized strings
+![One-click native login](resources/banner2.png)
 
-native/ticktick-login.swift       # WKWebView login helper source (compiled into resources/)
-install.sh                        # curl|bash installer (de-quarantines the helper)
-```
+As soon as the session is captured, the window closes and the token is saved. **Nothing is stored except the session token** — never your password. The token persists across restarts (in `~/Library/Application Support/TickTickFocus/`), and if it ever expires the button shows **↻** — just sign in again.
 
-> ⚠️ The TickTick focus endpoints are **private / unofficial** and may change without
-> notice. Everything host-specific is isolated in `ticktick-client.js`; failures degrade
-> to an error/reauth screen instead of crashing. The `pause`/`continue` op names and the
-> `status` enum in `focus-state.js` are best-effort and flagged for live confirmation
-> (PLAN Phase 0).
+> **Advanced:** you can also paste the `t` cookie value manually (ticktick.com → dev tools → Application/Storage → Cookies → `t`).
+
+### Why a login window instead of email/password fields?
+
+TickTick's web login requires a browser-generated `X-Csrftoken` that a headless request can't forge — a raw email/password POST gets rejected even with the correct password. Driving the real WebKit engine sidesteps that entirely: the page generates its own CSRF token and handles captcha/2FA, and the plugin just reads the resulting `t` cookie (WKWebView can read HttpOnly cookies, which page JavaScript can't).
+
+---
+
+## How it stays in sync
+
+State is server-authoritative. The plugin polls TickTick's live focus endpoint every ~30 s (paused when the key isn't visible) and ticks the `MM:SS` countdown locally each second in between. A click sends the operation, updates the button optimistically, and reconciles with the server — so a focus started on your phone shows up here within seconds.
+
+> ⚠️ The TickTick focus endpoints are **private / unofficial** and may change without notice. Everything host-specific is isolated in one file; failures degrade to an error/re-sign-in screen instead of crashing.
+
+---
 
 ## Development
 
-- `make bump_patch` / `bump_minor` / `bump_major` — bump version in both
-  `package.json` and `manifest.json`.
-- Pushing a changed `manifest.json` to `main` triggers `.github/workflows/release.yml`,
-  which builds the ZIP and creates a GitHub release.
+```bash
+git clone https://github.com/narlei/ulanzideck-ticktick
+cd ulanzideck-ticktick
+make install   # compile the native helper + sync to UlanziDeck + restart
+```
+
+| Command | What it does |
+|---|---|
+| `make package` | Build distributable ZIP → `dist/` |
+| `make login-bin` | Compile the native login helper (universal binary) |
+| `make sync` | Sync files without restarting |
+| `make restart` | Restart Ulanzi Studio only |
+| `make bump_patch` | Bump version (patch / minor / major) |
+
+Set `TTF_DEBUG=1` when running `node plugin/app.js` by hand to get verbose logs.
+
+**Layout**
+
+```
+com.narlei.ticktickfocus.ulanziPlugin/   # the plugin bundle
+├── plugin/            # app.js, ticktick-client.js, focus-state.js, renderer.js
+├── property-inspector/
+├── resources/         # icon.png, action.png, ticktick-login (native helper)
+└── en.json / pt_BR.json
+native/ticktick-login.swift               # WKWebView login helper source
+install.sh                                # curl|bash installer
+```
+
+---
+
+MIT © [Narlei Moreira](https://github.com/narlei)
