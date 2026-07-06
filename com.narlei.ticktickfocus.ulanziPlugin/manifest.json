@@ -1,0 +1,41 @@
+{
+  "UUID": "com.narlei.ticktickfocus.plugin",
+  "Name": "TickTick Focus",
+  "Description": "Control and mirror your TickTick focus/pomodoro from a single smart button. Start a 25-minute focus, pause/resume with the same click, and start the 5-minute break when focus ends. Detects focus started or paused on another device and shows the live remaining time (MM:SS) on your Ulanzi Deck.",
+  "Author": "Narlei Moreira",
+  "Version": "1.0.0",
+  "Icon": "resources/icon.png",
+  "Category": "TickTick",
+  "CategoryIcon": "resources/icon.png",
+  "CodePath": "plugin/app.js",
+  "Type": "JavaScript",
+  "PrivateAPI": true,
+  "SupportedInMultiActions": false,
+  "Actions": [
+    {
+      "Name": "Focus",
+      "Tooltip": "Start, pause, resume and mirror your TickTick focus timer.",
+      "Icon": "resources/action.png",
+      "PropertyInspectorPath": "property-inspector/inspector.html",
+      "UUID": "com.narlei.ticktickfocus.plugin.focus",
+      "States": [
+        {
+          "Image": "resources/action.png"
+        }
+      ],
+      "SupportedInMultiActions": false,
+      "Controllers": [
+        "Keypad"
+      ]
+    }
+  ],
+  "OS": [
+    {
+      "Platform": "mac",
+      "MinimumVersion": "10.15"
+    }
+  ],
+  "Software": {
+    "MinVersion": "3.0.11"
+  }
+}

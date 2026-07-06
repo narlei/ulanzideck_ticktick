@@ -1,0 +1,26 @@
+{
+  "Name": "Foco do TickTick",
+  "Description": "Controle e reflita o foco/pomodoro do TickTick a partir de um único botão inteligente. Inicie um foco de 25 minutos, pause/continue com o mesmo clique e inicie o relax de 5 minutos ao terminar. Detecta foco iniciado ou pausado em outro aparelho e mostra o tempo restante ao vivo (MM:SS) no seu Ulanzi Deck.",
+  "Actions": [
+    {
+      "Name": "Foco",
+      "Tooltip": "Inicie, pause, continue e reflita o timer de foco do TickTick."
+    }
+  ],
+  "Localization": {
+    "statusUnknown": "Não conectado",
+    "statusConnected": "Conectado ✓",
+    "statusDisconnected": "Não conectado",
+    "loginBtn": "Entrar no TickTick",
+    "loggingIn": "Aguardando login…",
+    "logoutBtn": "Sair",
+    "loginHelp": "Abre uma janelinha do TickTick. Faça login normalmente — a sessão é capturada automaticamente. Nada é guardado além do token de sessão.",
+    "advancedLabel": "Avançado — colar token manualmente",
+    "tokenLabel": "Token de sessão (cookie t)",
+    "saveTokenBtn": "Salvar token",
+    "tokenHelp": "Em ticktick.com → ferramentas de desenvolvedor → Application/Storage → Cookies → copie o valor de t.",
+    "focusLabel": "Foco (min)",
+    "breakLabel": "Pausa (min)",
+    "durationHint": "Deixe em 0 para usar as preferências de pomodoro do TickTick."
+  }
+}

@@ -1,0 +1,56 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - com.narlei.ticktickfocus.ulanziPlugin/manifest.json
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    # macOS runner: `make package` compiles the native Swift login helper (swiftc).
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Read version from manifest
+        id: version
+        run: echo "version=$(jq -r .Version com.narlei.ticktickfocus.ulanziPlugin/manifest.json)" >> "$GITHUB_OUTPUT"
+
+      - name: Check if release already exists
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view "v${{ steps.version.outputs.version }}" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "Release v${{ steps.version.outputs.version }} already exists — skipping."
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Setup Node
+        if: steps.check.outputs.exists == 'false'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Build plugin ZIP
+        if: steps.check.outputs.exists == 'false'
+        run: make package
+
+      - name: Create release
+        if: steps.check.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          gh release create "v$VERSION" \
+            --repo "$GITHUB_REPOSITORY" \
+            --title "v$VERSION" \
+            --notes-file release_notes.md \
+            --latest \
+            dist/com.narlei.ticktickfocus.ulanziPlugin.zip

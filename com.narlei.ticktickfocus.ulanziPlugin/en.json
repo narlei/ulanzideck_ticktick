@@ -1,0 +1,26 @@
+{
+  "Name": "TickTick Focus",
+  "Description": "Control and mirror your TickTick focus/pomodoro from a single smart button. Start a 25-minute focus, pause/resume with the same click, and start the 5-minute break when focus ends. Detects focus started or paused on another device and shows the live remaining time (MM:SS) on your Ulanzi Deck.",
+  "Actions": [
+    {
+      "Name": "Focus",
+      "Tooltip": "Start, pause, resume and mirror your TickTick focus timer."
+    }
+  ],
+  "Localization": {
+    "statusUnknown": "Not connected",
+    "statusConnected": "Connected ✓",
+    "statusDisconnected": "Not connected",
+    "loginBtn": "Sign in to TickTick",
+    "loggingIn": "Waiting for login…",
+    "logoutBtn": "Sign out",
+    "loginHelp": "Opens a small TickTick window. Log in normally — the session is captured automatically. Nothing is stored except the session token.",
+    "advancedLabel": "Advanced — paste token manually",
+    "tokenLabel": "Session token (cookie t)",
+    "saveTokenBtn": "Save token",
+    "tokenHelp": "From ticktick.com → dev tools → Application/Storage → Cookies → copy the value of t.",
+    "focusLabel": "Focus (min)",
+    "breakLabel": "Break (min)",
+    "durationHint": "Leave at 0 to use your TickTick pomodoro preferences."
+  }
+}

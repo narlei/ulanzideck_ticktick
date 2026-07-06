@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,minimal-ui,viewport-fit=cover" />
+  <title>TickTick Focus</title>
+  <link rel="stylesheet" href="../libs/css/uspi.css">
+  <style>
+    .panel { padding: 10px 12px; font-size: 12px; line-height: 1.5; }
+    .field { margin-bottom: 10px; }
+    .field label { display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; opacity: 0.7; margin-bottom: 4px; }
+    .field input { width: 100%; box-sizing: border-box; background: #2c2c2f; color: #fff; border: 1px solid #444; padding: 5px 7px; border-radius: 3px; }
+    .row { display: flex; gap: 8px; }
+    .row .field { flex: 1; }
+    button { background: #4772FA; color: #fff; border: none; padding: 7px 12px; border-radius: 4px; font-weight: 600; cursor: pointer; }
+    button.block { width: 100%; }
+    button.secondary { background: #3a3a40; }
+    button:disabled { opacity: 0.5; cursor: default; }
+    .status { display: flex; align-items: center; gap: 6px; margin: 4px 0 10px; font-weight: 600; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; background: #6a6a73; }
+    .dot.ok { background: #3ecf6b; }
+    .dot.err { background: #e3434c; }
+    .divider { border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 12px 0; }
+    .hint { font-size: 11px; opacity: 0.6; margin-top: 6px; }
+    .hint code { background: rgba(255,255,255,0.08); padding: 1px 4px; border-radius: 3px; font-family: 'SF Mono', Menlo, monospace; }
+    .err-text { color: #e3434c; }
+    .actions { display: flex; gap: 8px; margin-top: 6px; align-items: center; }
+    details { margin-top: 10px; }
+    summary { cursor: pointer; font-size: 11px; opacity: 0.7; }
+    .hidden-block { display: none; }
+  </style>
+</head>
+<body>
+  <div class="udpi-wrapper hidden uspi-wrapper">
+    <form id="property-inspector" onsubmit="return false;">
+      <div class="panel">
+        <div class="status">
+          <span class="dot" id="status-dot"></span>
+          <span id="status-text" data-localize="statusUnknown">Not connected</span>
+        </div>
+
+        <button id="login-btn" class="block" data-localize="loginBtn">Sign in to TickTick</button>
+        <button id="logout-btn" class="block secondary hidden-block" data-localize="logoutBtn" style="margin-top:8px;">Sign out</button>
+        <p class="hint err-text" id="error-hint"></p>
+        <p class="hint" data-localize="loginHelp">Opens a small TickTick window. Log in normally — the session is captured automatically. Nothing is stored except the session token.</p>
+
+        <details>
+          <summary data-localize="advancedLabel">Advanced — paste token manually</summary>
+          <div class="field" style="margin-top:8px;">
+            <label data-localize="tokenLabel">Session token (cookie t)</label>
+            <input type="text" id="token" autocomplete="off" placeholder="paste the t cookie value">
+          </div>
+          <div class="actions">
+            <button id="token-btn" class="secondary" data-localize="saveTokenBtn">Save token</button>
+          </div>
+          <p class="hint" data-localize="tokenHelp">From ticktick.com → dev tools → Application/Storage → Cookies → copy the value of <code>t</code>.</p>
+        </details>
+
+        <hr class="divider">
+
+        <div class="row">
+          <div class="field">
+            <label data-localize="focusLabel">Focus (min)</label>
+            <input type="number" id="focus-override" min="0" step="1" placeholder="25">
+          </div>
+          <div class="field">
+            <label data-localize="breakLabel">Break (min)</label>
+            <input type="number" id="break-override" min="0" step="1" placeholder="5">
+          </div>
+        </div>
+        <p class="hint" data-localize="durationHint">Leave at 0 to use your TickTick pomodoro preferences.</p>
+      </div>
+    </form>
+  </div>
+
+  <script src="../libs/js/constants.js"></script>
+  <script src="../libs/js/eventEmitter.js"></script>
+  <script src="../libs/js/timers.js"></script>
+  <script src="../libs/js/utils.js"></script>
+  <script src="../libs/js/ulanziApi.js"></script>
+  <script src="./inspector.js"></script>
+</body>
+</html>
