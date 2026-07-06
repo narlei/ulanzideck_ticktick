@@ -1,4 +1,4 @@
-# TickTick Focus
+# TickTick Focus - Ulanzi Deck Plugin
 
 **Your TickTick focus timer — live on a physical button.**
 
