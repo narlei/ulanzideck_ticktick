@@ -1,0 +1,14 @@
+{
+  "cover": "resources/cover.png",
+  "screenshots": [
+    "resources/banner1.png",
+    "resources/banner2.png"
+  ],
+  "longDescription": "Unofficial, independent plugin — not affiliated with or endorsed by TickTick. Control and mirror your TickTick focus/pomodoro from a single smart button. Start a 25-minute focus, pause/resume with the same click, and start the 5-minute break when focus ends. Detects focus started or paused on another device and shows the live remaining time (MM:SS) on your Ulanzi Deck. Your data stays private: only a session token is stored locally, and the plugin talks directly to TickTick — never to a third-party server.",
+  "deviceTypes": [
+    "deck"
+  ],
+  "tags": [
+    "productivity"
+  ]
+}
