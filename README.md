@@ -6,9 +6,9 @@ Start, pause, and break your pomodoro from one smart key. No app switching, no d
 
 ![TickTick Focus on an Ulanzi Deck](resources/cover.png)
 
+[![Available on Ulanzi Community Store](https://raw.githubusercontent.com/narlei/ulanzicommunitystore/main/docs/badges/ulanzi-community-store.svg)](https://ulanzicommunitystore.narlei.com)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Platform](https://img.shields.io/badge/platform-macOS-lightgrey.svg)]()
-[![UlanziDeck](https://img.shields.io/badge/UlanziDeck-plugin-orange.svg)]()
 [![Native login](https://img.shields.io/badge/login-one--click-4772FA.svg)]()
 [![Unofficial](https://img.shields.io/badge/unofficial-not%20affiliated%20with%20TickTick-lightgrey.svg)]()
 
