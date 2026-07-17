@@ -98,8 +98,9 @@ export function renderBreak({ mmss, ratio }) {
 
 export function renderIdle() {
   const body = [
-    tickIcon(RING_CX, 84, 74),
-    textWithShadow('Focus', RING_CX, 168, 34, '700'),
+    // action.png has ~30% transparent padding, so draw oversized to get a large visible glyph.
+    tickIcon(RING_CX, 80, 160),
+    textWithShadow('Start Focus', RING_CX, 172, 28, '700'),
   ].join('');
   return frame(body);
 }
